@@ -1,11 +1,11 @@
 # Generated from packaging/homebrew/aetherdesk.rb.in in stormlantern-dev/aetherdesk
 # by packaging/homebrew/casks.sh. Edit the template there, not this file.
 cask "aetherdesk" do
-  version "0.1.0-alpha.1"
+  version "0.1.0-alpha.2"
 
   on_linux do
     on_intel do
-      sha256 "e548b44b40df03b6aad2a0369b2615fa1858f9572368b94e06ccf8b4076c9a16"
+      sha256 "5c8b8d90398faee41e57b2c0a308385b4f863afef6630ae07dbfc8e1b31e306d"
       url "https://github.com/stormlantern-dev/aetherdesk/releases/download/v#{version}/aetherdesk-#{version}-x86_64-linux.tar.gz"
     end
   end
