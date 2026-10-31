@@ -1,8 +1,8 @@
 # Generated from packaging/homebrew/aetherdesk-host.rb.in in stormlantern-dev/aetherdesk
 # by packaging/homebrew/casks.sh. Edit the template there, not this file.
 cask "aetherdesk-host" do
-  version "0.1.0-alpha.2"
-  sha256 "61d07155955c98fceae6cf5bd374cca68b1c017d0115bd808350c44afcb39a5a"
+  version "0.1.0-alpha.3"
+  sha256 "b8495e1cf50b6ebc6877b6141e45e9b05285c96eb73fe9932a309fc4aa0297c2"
 
   url "https://github.com/stormlantern-dev/aetherdesk/releases/download/v#{version}/aetherdesk-host-#{version}-arm64-macos.tar.gz"
   name "AetherDesk host"
@@ -45,9 +45,8 @@ cask "aetherdesk-host" do
       aether-agent install
     Then, once, grant Screen Recording and Accessibility to
       /Library/Application Support/AetherDesk/aether-agent
-    in System Settings → Privacy & Security. This build is signed ad hoc, so
-    macOS asks again after an update, unless you have a code-signing identity
-    "AetherDesk Dev" (or set AETHERDESK_IDENTITY).
+    in System Settings → Privacy & Security. Releases are signed with a
+    Developer ID and notarized, so these stay granted across updates.
 
     Let a client pair:   sudo aether-agent pair
     Remove it all:       aether-agent uninstall
