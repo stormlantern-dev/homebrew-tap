@@ -1,8 +1,8 @@
 # Generated from packaging/homebrew/aetherdesk-host.rb.in in stormlantern-dev/aetherdesk
 # by packaging/homebrew/casks.sh. Edit the template there, not this file.
 cask "aetherdesk-host" do
-  version "0.1.0-alpha.4"
-  sha256 "10932771898503847800467e9215216ec721b427e9caa4986b7fe55945fc794a"
+  version "0.1.0-alpha.5"
+  sha256 "9219e1b684474e6c15165c0210acd4c45940e0adcce6f7edc3ce0fb510011a02"
 
   url "https://github.com/stormlantern-dev/aetherdesk/releases/download/v#{version}/aetherdesk-host-#{version}-arm64-macos.tar.gz"
   name "AetherDesk host"
