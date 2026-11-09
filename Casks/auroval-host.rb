@@ -1,8 +1,8 @@
 # Generated from packaging/homebrew/auroval-host.rb.in in auroval/remote
 # by packaging/homebrew/casks.sh. Edit the template there, not this file.
 cask "auroval-host" do
-  version "0.1.0-alpha.7"
-  sha256 "a3cb527a13ff14559fe560c18e8d05c5a1a838d1c64fc97a74d46316f2b32853"
+  version "0.1.0-alpha.8"
+  sha256 "1ae7daa5e441c7277fe2de2b84113eda6e86ef7efd851fd9f9a8bcdede15c679"
 
   url "https://github.com/auroval/remote/releases/download/v#{version}/auroval-host-#{version}-arm64-macos.tar.gz"
   name "Auroval host"
@@ -16,9 +16,12 @@ cask "auroval-host" do
   depends_on arch: :arm64
   depends_on macos: :sonoma
 
-  binary "auroval-host-#{version}-arm64-macos/auroval-agent"
+  # The CLI inside the app; `auroval-agent install` copies the app to
+  # /Applications and notes that Homebrew installed it, so the app's own
+  # updater stays off and `brew upgrade` does it.
+  binary "auroval-host-#{version}-arm64-macos/Auroval.app/Contents/MacOS/auroval-agent"
 
-  # No postflight: the binary is notarized, so Gatekeeper runs it with the
+  # No postflight: the app is notarized, so Gatekeeper runs it with the
   # quarantine flag, and `auroval-agent install` drops the flag from the copy
   # it installs. (Homebrew deprecated Ruby flight blocks in taps.)
 
@@ -29,24 +32,27 @@ cask "auroval-host" do
         "nl.stormlantern.auroval.daemon",
         "nl.stormlantern.auroval.agent",
         "nl.stormlantern.auroval.loginwindow",
+        "nl.stormlantern.auroval.menu",
       ],
       delete:    [
         "/Library/LaunchDaemons/nl.stormlantern.auroval.daemon.plist",
         "/Library/LaunchAgents/nl.stormlantern.auroval.agent.plist",
         "/Library/LaunchAgents/nl.stormlantern.auroval.loginwindow.plist",
+        "/Library/LaunchAgents/nl.stormlantern.auroval.menu.plist",
+        "/Applications/Auroval.app",
         "/Library/Application Support/Auroval",
         "/Library/Logs/Auroval",
         "/Library/Audio/Plug-Ins/HAL/Auroval.driver",
       ]
 
   caveats <<~EOS
-    Alpha. Install the daemon and agents (asks for your password; run it
-    again after every brew upgrade, since the installed copy is what runs):
+    Alpha. Install Auroval.app with the daemon and agents (asks for your
+    password; run it again after every brew upgrade, since the installed
+    copy is what runs):
       auroval-agent install
-    Then, once, grant Screen Recording and Accessibility to
-      /Library/Application Support/Auroval/auroval-agent
-    in System Settings → Privacy & Security, then restart the agent:
-      auroval-agent restart
+    Then, once, turn Auroval on under Accessibility and Screen Recording
+    when macOS asks (the Auroval menu-bar item asks, one at a time). No
+    restart needed.
     Releases are signed with a Developer ID and notarized, so these stay
     granted across updates.
 
