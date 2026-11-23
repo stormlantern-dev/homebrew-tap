@@ -1,11 +1,11 @@
 # Generated from packaging/homebrew/auroval.rb.in in auroval/remote
 # by packaging/homebrew/casks.sh. Edit the template there, not this file.
 cask "auroval" do
-  version "0.1.0-alpha.7"
+  version "0.1.0-alpha.10"
 
   on_linux do
     on_intel do
-      sha256 "c4d43c547b27e409ca9fc1a200d8ec1a1fac2742bfe1cdce2aeadb881eaf21ab"
+      sha256 "0b0cc17249d6c92c0332b175ceb619729865d879b4b1eceb634b08f3042aeea0"
       url "https://github.com/auroval/remote/releases/download/v#{version}/auroval-#{version}-x86_64-linux.tar.gz"
     end
   end
